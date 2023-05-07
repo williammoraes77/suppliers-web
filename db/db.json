@@ -1,0 +1,25 @@
+{
+  "products": [
+    { "id": 1, "name": "Produto 1", "measurement_unit_type": "unidade" },
+    { "id": 2, "name": "Produto 2", "measurement_unit_type": "quilograma" },
+    { "id": 3, "name": "Produto 3", "measurement_unit_type": "metro" }
+  ],
+  "suppliers": [
+    {
+      "id": 1,
+      "name": "Fornecedor 1",
+      "cnpj": "12.345.678/0001-00",
+      "address": "Rua tavarez de lyra, 1833",
+      "phone": "(41) 99255-9329",
+      "products_id": [1, 2]
+    },
+    {
+      "id": 1,
+      "name": "Fornecedor 2",
+      "cnpj": "01.345.678/0001-00",
+      "address": "Rua tavarez de lyra, 1833",
+      "phone": "(41) 99255-9329",
+      "products_id": [1, 2]
+    }
+  ]
+}
