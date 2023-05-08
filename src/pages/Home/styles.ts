@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
 
   main {
     padding: 1.5rem;
-    background-color: ${({ theme }) => theme.backgroundDark};
+    background-color: ${({ theme }) => theme.colors.backgroundDark};
     border-radius: 16px;
   }
 `;

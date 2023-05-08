@@ -3,7 +3,9 @@ import {
   InfoContainer,
   ProductTitle,
   InfoContent,
+  UnityMeasurementTitle,
   UnityMeasurement,
+  BrandTitle,
   Brand,
 } from "./styles";
 import { ProductDTO } from "src/dtos/ProductDTO";
@@ -21,10 +23,16 @@ export function ProductCard({ product_prop }: ProductProps) {
       <InfoContainer>
         <ProductTitle>{product_prop.name}</ProductTitle>
         <InfoContent>
-          <UnityMeasurement>
-            {product_prop.measurement_unit_type}
-          </UnityMeasurement>
-          <Brand>{product_prop.brand}</Brand>
+          <div>
+            <UnityMeasurementTitle>Uni. medida</UnityMeasurementTitle>
+            <UnityMeasurement>
+              {product_prop.measurement_unit_type}
+            </UnityMeasurement>
+          </div>
+          <div>
+            <BrandTitle>Marca</BrandTitle>
+            <Brand>{product_prop.brand}</Brand>
+          </div>
         </InfoContent>
       </InfoContainer>
     </CardContainer>

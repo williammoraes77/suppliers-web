@@ -1,20 +1,20 @@
 import styled from "styled-components";
 
 export const SideBarContainer = styled.aside`
-  background-color: ${({ theme }) => theme.backgroundLight};
+  background-color: ${({ theme }) => theme.colors.backgroundLight};
   border-radius: 16px;
   padding: 1rem;
 `;
 
 export const SideBarCardContent = styled.div`
   padding: 2rem 0;
-  border-top: 1px solid ${({ theme }) => theme.fontColor};
-  border-bottom: 1px solid ${({ theme }) => theme.fontColor};
+  border-top: 1px solid ${({ theme }) => theme.colors.fontColor};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.fontColor};
 `;
 
 export const SidebarTitle = styled.h3`
   padding: 1rem 0.6rem;
-  color: ${({ theme }) => theme.fontColor};
+  color: ${({ theme }) => theme.colors.fontColor};
 `;
 
 export const Options = styled.div``;
@@ -29,11 +29,11 @@ export const CardLinkOption = styled.div`
 
   span {
     margin-left: 10px;
-    color: ${({ theme }) => theme.fontColor};
+    color: ${({ theme }) => theme.colors.fontColor};
   }
 
   &:hover {
-    /* background-color: ${({ theme }) => theme.fontColorDark}; */
+    /* background-color: ${({ theme }) => theme.colors.fontColorDark}; */
     background: linear-gradient(
       90deg,
       rgba(8, 45, 103, 1) 0%,
@@ -42,7 +42,7 @@ export const CardLinkOption = styled.div`
     );
 
     span {
-      color: ${({ theme }) => theme.fontColorLight};
+      color: ${({ theme }) => theme.colors.fontColorLight};
     }
   }
 `;

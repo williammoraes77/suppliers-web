@@ -17,19 +17,23 @@ export function Sidebar() {
       <Options>
         <NavLink to="/" title="Home">
           <CardLinkOption>
-            <House size={22} color={theme.fontColor} weight="fill" />
+            <House size={22} color={theme.colors.fontColor} weight="fill" />
             <span>Home</span>
           </CardLinkOption>
         </NavLink>
         <NavLink to="/produtos" title="Listar">
           <CardLinkOption>
-            <MonitorPlay size={22} color={theme.fontColor} weight="fill" />
+            <MonitorPlay
+              size={22}
+              color={theme.colors.fontColor}
+              weight="fill"
+            />
             <span>Produtos</span>
           </CardLinkOption>
         </NavLink>
         <NavLink to="/fornecedores" title="Listar">
           <CardLinkOption>
-            <BookOpen size={22} color={theme.fontColor} weight="fill" />
+            <BookOpen size={22} color={theme.colors.fontColor} weight="fill" />
             <span>Fornecedores</span>
           </CardLinkOption>
         </NavLink>

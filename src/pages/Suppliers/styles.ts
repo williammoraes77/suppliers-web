@@ -13,7 +13,40 @@ export const Wrapper = styled.div`
 
   main {
     padding: 1.5rem;
-    background-color: ${({ theme }) => theme.backgroundDark};
+    background-color: ${({ theme }) => theme.colors.backgroundDark};
     border-radius: 16px;
+  }
+`;
+
+export const DataContent = styled.div`
+  width: 100%;
+  height: 100%;
+  margin: auto;
+`;
+
+export const Table = styled.table`
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+`;
+
+export const TableHeader = styled.th`
+  padding: 10px;
+  text-align: left;
+  background-color: #ddd;
+  border: 1px solid #ccc;
+`;
+
+export const TableData = styled.td`
+  padding: 10px;
+  border: 1px solid #ccc;
+`;
+
+export const TableRow = styled.tr`
+  &:nth-child(even) {
+    background-color: #f2f2f2;
   }
 `;

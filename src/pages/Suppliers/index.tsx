@@ -1,9 +1,17 @@
 import { Sidebar } from "@components/Sidebar";
 
-import { Wrapper } from "./styles";
+import {
+  Wrapper,
+  DataContent,
+  Table,
+  TableRow,
+  TableHeader,
+  TableData,
+} from "./styles";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { SupplierDTO } from "src/dtos/SupplierDTO";
+import { Button } from "@components/Button";
 
 export function Suppliers() {
   const [suppliers, setSuppliers] = useState<SupplierDTO[]>([]);
@@ -27,7 +35,33 @@ export function Suppliers() {
 
         <main>
           <h1>Fornecedores</h1>
-          <ul>
+          <DataContent>
+            <Table>
+              <thead>
+                <TableRow>
+                  <TableHeader>Nome</TableHeader>
+                  <TableHeader>CNPJ</TableHeader>
+                  <TableHeader>Endereço</TableHeader>
+                  <TableHeader>Telefone</TableHeader>
+                  <TableHeader>Detalhes</TableHeader>
+                </TableRow>
+              </thead>
+              <tbody>
+                {suppliers.map((supplier) => (
+                  <TableRow key={supplier.id}>
+                    <TableData>{supplier.name}</TableData>
+                    <TableData>{supplier.cnpj}</TableData>
+                    <TableData>{supplier.address}</TableData>
+                    <TableData>{supplier.phone}</TableData>
+                    <TableData>
+                      <Button title="Detalhes" />
+                    </TableData>
+                  </TableRow>
+                ))}
+              </tbody>
+            </Table>
+          </DataContent>
+          {/* <ul>
             {suppliers.map((supplier) => (
               <div key={supplier.id}>
                 <li>{supplier.id}</li>
@@ -38,7 +72,7 @@ export function Suppliers() {
                 ))}
               </div>
             ))}
-          </ul>
+          </ul> */}
         </main>
       </Wrapper>
     </div>

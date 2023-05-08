@@ -17,6 +17,90 @@
       "name": "Produto 3",
       "measurement_unit_type": "metro",
       "brand": "Puma"
+    },
+    {
+      "id": 4,
+      "name": "Produto 4",
+      "measurement_unit_type": "metro",
+      "brand": "Puma"
+    },
+    {
+      "id": 5,
+      "name": "Produto 5",
+      "measurement_unit_type": "metro",
+      "brand": "Puma"
+    },
+    {
+      "id": 6,
+      "name": "Produto 6",
+      "measurement_unit_type": "metro",
+      "brand": "Puma"
+    },
+    {
+      "id": 7,
+      "name": "Produto 7",
+      "measurement_unit_type": "metro",
+      "brand": "Puma"
+    },
+    {
+      "name": "Produto 8",
+      "brand": "testee",
+      "measurement_unit_type": "metro",
+      "id": 8
+    },
+    {
+      "name": "Produto 9",
+      "brand": "testee 2",
+      "measurement_unit_type": "quilograma",
+      "id": 9
+    },
+    {
+      "name": "Produto 10",
+      "brand": "nova marca",
+      "measurement_unit_type": "metro",
+      "id": 10
+    },
+    {
+      "name": "Produto 11",
+      "brand": "nova marca",
+      "measurement_unit_type": "quilograma",
+      "id": 11
+    },
+    {
+      "name": "Produto 1",
+      "brand": "Nike",
+      "measurement_unit_type": "",
+      "id": 12
+    },
+    {
+      "name": "Produto 12",
+      "brand": "Nike",
+      "measurement_unit_type": "",
+      "id": 13
+    },
+    {
+      "name": "Produto 2",
+      "brand": "Nike",
+      "measurement_unit_type": "unidade",
+      "id": 14
+    },
+    {
+      "name": "produto teste",
+      "brand": "Nike",
+      "measurement_unit_type": "unidade",
+      "id": 15
+    },
+    {
+      "name": "Produto testew",
+      "brand": "teste",
+      "measurement_unit_type": "unidade",
+      "id": 16
+    },
+    {
+      "name": "produto teste 3",
+      "brand": "teste",
+      "measurement_unit_type": "unidade",
+      "id": 17
     }
   ],
   "suppliers": [
@@ -26,7 +110,10 @@
       "cnpj": "12.345.678/0001-00",
       "address": "Rua tavarez de lyra, 1833",
       "phone": "(41) 99255-9329",
-      "products_id": [1, 2]
+      "products_id": [
+        1,
+        2
+      ]
     },
     {
       "id": 1,
@@ -34,7 +121,10 @@
       "cnpj": "01.345.678/0001-00",
       "address": "Rua tavarez de lyra, 1833",
       "phone": "(41) 99255-9329",
-      "products_id": [1, 2]
+      "products_id": [
+        1,
+        2
+      ]
     }
   ]
 }
