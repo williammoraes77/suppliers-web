@@ -4,6 +4,7 @@ import { Wrapper } from "./styles";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { ProductDTO } from "src/dtos/ProductDTO";
+import { ProductCard } from "@components/ProductCard";
 
 export function Products() {
   const [products, setProducts] = useState<ProductDTO[]>([]);
@@ -30,12 +31,13 @@ export function Products() {
 
           <ul>
             {products.map((product) => (
-              <div key={product.id}>
-                <li>{product.id}</li>
-                <li>{product.name}</li>
-                <li>{product.measurement_unit_type}</li>
-                <li>{product.picture}</li>
-              </div>
+              // <div key={product.id}>
+              //   <li>{product.id}</li>
+              //   <li>{product.name}</li>
+              //   <li>{product.measurement_unit_type}</li>
+              //   <li>{product.picture}</li>
+              // </div>
+              <ProductCard product_prop={product} />
             ))}
           </ul>
         </main>
