@@ -1,5 +1,8 @@
 import { Sidebar } from "@components/Sidebar";
 
+import AliceCarousel from "react-alice-carousel";
+import "react-alice-carousel/lib/alice-carousel.css";
+
 import {
   Wrapper,
   DataContent,
@@ -8,24 +11,44 @@ import {
   NameData,
   DataHeader,
   ProductsContainer,
+  CardContainer,
+  SupplierProducts,
+  ButtonContainer,
+  StyledCarousel,
+  StyledAliceButton,
 } from "./styles";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { SupplierDTO } from "src/dtos/SupplierDTO";
-import { Button } from "@components/Button";
 import { useParams } from "react-router-dom";
 import { ProductDTO } from "src/dtos/ProductDTO";
 import { ProductCard } from "@components/ProductCard";
+import { Button } from "@components/Button";
 
 export function SupplierDetail() {
   const [supplier, setSupplier] = useState<SupplierDTO>({} as SupplierDTO);
   const [products, setProducts] = useState<ProductDTO[]>([]);
-
-  const filteredProducts = products.filter((product) => {
-    return supplier.products_id.includes(product.id);
-  });
+  const [isSupplierTab, setIsSupplierTab] = useState(true);
 
   const { id } = useParams();
+
+  const filteredSupplierProducts = products.filter((product) => {
+    return supplier.products_id && supplier.products_id.includes(product.id);
+  });
+
+  const filteredProductsLessOfSupplier = products.filter((product) => {
+    return !filteredSupplierProducts.includes(product);
+  });
+
+  const responsive = {
+    0: { items: 1 },
+    768: { items: 2 },
+    1024: { items: 4 },
+  };
+
+  console.log(filteredSupplierProducts);
+  console.log("-----------");
+  console.log(filteredProductsLessOfSupplier);
 
   async function getSupplier() {
     axios.get(`http://localhost:3001/suppliers/${id}`).then((res) => {
@@ -69,11 +92,74 @@ export function SupplierDetail() {
               </InfoContent>
             </DataHeader>
             <ProductsContainer>
-              {filteredProducts.map((product) => {
-                return (
-                  <ProductCard product_prop={product} onClick={() => {}} />
-                );
-              })}
+              <ButtonContainer>
+                <Button
+                  title="Produtos do fornecedor"
+                  button_type="primary"
+                  onClick={() => setIsSupplierTab(true)}
+                />
+                <Button
+                  title="Adicionar produto"
+                  button_type="secondary"
+                  onClick={() => setIsSupplierTab(false)}
+                />
+              </ButtonContainer>
+              {isSupplierTab ? (
+                <SupplierProducts>
+                  <h2>Confira os produtos do fornecedor </h2>
+                  {filteredSupplierProducts.length > 0 && (
+                    <StyledCarousel
+                      renderPrevButton={() => (
+                        <StyledAliceButton> {"<"} </StyledAliceButton>
+                      )}
+                      renderNextButton={() => (
+                        <StyledAliceButton> {">"} </StyledAliceButton>
+                      )}
+                      autoPlay
+                      autoPlayInterval={3000}
+                      responsive={responsive}
+                    >
+                      {filteredSupplierProducts.map((product) => (
+                        <CardContainer>
+                          <ProductCard
+                            key={product.id}
+                            product_prop={product}
+                            onClick={() => {}}
+                            card_type="delete"
+                          />
+                        </CardContainer>
+                      ))}
+                    </StyledCarousel>
+                  )}
+                </SupplierProducts>
+              ) : (
+                <SupplierProducts>
+                  <h2>Adicione os produtos ao fornecedor </h2>
+                  {filteredSupplierProducts.length > 0 && (
+                    <StyledCarousel
+                      renderPrevButton={() => (
+                        <StyledAliceButton> {"<"} </StyledAliceButton>
+                      )}
+                      renderNextButton={() => (
+                        <StyledAliceButton> {">"} </StyledAliceButton>
+                      )}
+                      autoPlay
+                      autoPlayInterval={3000}
+                      responsive={responsive}
+                    >
+                      {filteredProductsLessOfSupplier.map((product) => (
+                        <CardContainer key={product.id}>
+                          <ProductCard
+                            product_prop={product}
+                            onClick={() => {}}
+                            card_type="new"
+                          />
+                        </CardContainer>
+                      ))}
+                    </StyledCarousel>
+                  )}
+                </SupplierProducts>
+              )}
             </ProductsContainer>
           </DataContent>
         </main>

@@ -9,13 +9,9 @@ export const ButtonContent = styled.button<Props>`
   font-size: 16px;
   border-radius: 5px;
   border: none;
-  background-color: #4caf50;
+
   color: white;
   cursor: pointer;
-
-  &:hover {
-    background-color: #3e8e41;
-  }
 
   ${({ theme, button_type }) =>
     button_type === "primary"
@@ -25,7 +21,10 @@ export const ButtonContent = styled.button<Props>`
       : css`
           background-color: ${theme.colors.buttomSecondary};
           &:hover {
-            background-color: #7ec8ea;
+            background-color: #ccd8dd;
+            &:hover {
+              color: ${theme.colors.fontColor};
+            }
           }
         `}
 

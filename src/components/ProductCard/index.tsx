@@ -16,15 +16,24 @@ import { Button } from "@components/Button";
 
 interface ProductProps {
   product_prop: ProductDTO;
+  card_type?: "new" | "delete";
   onClick: () => void;
 }
 
-export function ProductCard({ product_prop, onClick }: ProductProps) {
+export function ProductCard({
+  product_prop,
+  onClick,
+  card_type = "new",
+}: ProductProps) {
   return (
     <CardContainer>
       <ButtonContent>
         <div></div>
-        <Button title="X" button_type="delete" onClick={onClick} />
+        {card_type == "delete" ? (
+          <Button title="X" button_type="delete" onClick={onClick} />
+        ) : (
+          <Button title="+" button_type="primary" onClick={onClick} />
+        )}
       </ButtonContent>
       <img src={ProductImage} alt="" />
       <InfoContainer>
