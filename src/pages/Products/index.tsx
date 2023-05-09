@@ -1,14 +1,9 @@
 import React from "react";
-import Modal from "react-modal";
-import { Sidebar } from "@components/Sidebar";
-
-import { Col, Row } from "react-grid-system";
-
 import { useEffect, useState } from "react";
-import axios from "axios";
-import { ProductDTO } from "src/dtos/ProductDTO";
-import { ProductCard } from "@components/ProductCard";
-import { Button } from "@components/Button";
+import Modal from "react-modal";
+import { Col, Row } from "react-grid-system";
+import { api } from "@services/api";
+import { SupplierDTO } from "src/dtos/SupplierDTO";
 
 import {
   Wrapper,
@@ -21,14 +16,16 @@ import {
   ButtonContainer,
 } from "./styles";
 
+import { Sidebar } from "@components/Sidebar";
+import { ProductDTO } from "src/dtos/ProductDTO";
+import { ProductCard } from "@components/ProductCard";
+import { Button } from "@components/Button";
 import Loading from "@components/Loading";
 import Message from "@components/Message";
-import { SupplierDTO } from "src/dtos/SupplierDTO";
 
 Modal.setAppElement("#root");
 
 export function Products() {
-  const [isLoading, setIsLoading] = useState(true);
   const [products, setProducts] = useState<ProductDTO[]>([]);
   const [suppliers, setSuppliers] = useState<SupplierDTO[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -52,13 +49,19 @@ export function Products() {
         brand,
         measurement_unit_type: measurementUnitType,
       } as ProductDTO;
-      const res = await axios.post("http://localhost:3001/products", product);
-      const newProductResponse = res.data;
-      setProducts((prevProducts) => [...prevProducts, newProductResponse]);
-      setLoading(false);
-      setMessageSuccess(true);
-      setTimeout(() => setIsModalOpen(false), 1200);
-      setTimeout(() => setMessageSuccess(false), 1200);
+      try {
+        const res = await api.post("/products", product);
+        const newProductResponse = res.data;
+        setProducts((prevProducts) => [...prevProducts, newProductResponse]);
+        setLoading(false);
+        setMessageSuccess(true);
+        setTimeout(() => setIsModalOpen(false), 1200);
+        setTimeout(() => setMessageSuccess(false), 1200);
+      } catch (error) {
+        setLoading(false);
+        setProductExist(true);
+        setTimeout(() => setProductExist(false), 2000);
+      }
     } else {
       setLoading(false);
       setProductExist(true);
@@ -68,47 +71,57 @@ export function Products() {
 
   async function deleteProduct(product_id: number) {
     setIsModalDeleteOpen(true);
-    axios
-      .delete("http://localhost:3001/products/" + product_id)
-      .then((response) => {
-        const updateProducts = products.filter(
-          (product) => product.id != product_id
-        );
 
-        suppliers.forEach((supplier) => {
-          const products_id = supplier.products_id.filter(
-            (prod_id) => prod_id != product_id
+    try {
+      api
+        .delete("/products/" + product_id)
+        .then((response) => {
+          const updateProducts = products.filter(
+            (product) => product.id != product_id
           );
 
-          const newSupplier = {
-            name: supplier.name,
-            address: supplier.address,
-            phone: supplier.phone,
-            cnpj: supplier.cnpj,
-            products_id: products_id,
-          } as SupplierDTO;
+          suppliers.forEach((supplier) => {
+            const products_id = supplier.products_id.filter(
+              (prod_id) => prod_id != product_id
+            );
 
-          const response = axios.put(
-            `http://localhost:3001/suppliers/${supplier.id}`,
-            newSupplier
-          );
+            const newSupplier = {
+              name: supplier.name,
+              address: supplier.address,
+              phone: supplier.phone,
+              cnpj: supplier.cnpj,
+              products_id: products_id,
+            } as SupplierDTO;
+
+            const response = api.put(`/suppliers/${supplier.id}`, newSupplier);
+          });
+          setProducts(updateProducts);
+        })
+        .catch((error) => {
+          console.error("Erro ao excluir o item:", error);
         });
-        setProducts(updateProducts);
-      })
-      .catch((error) => {
-        console.error("Erro ao excluir o item:", error);
-      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async function getProducts() {
-    const res = await axios.get("http://localhost:3001/products");
-    const products_response = res.data;
-    setProducts(products_response);
+    try {
+      const res = await api.get("/products");
+      const products_response = res.data;
+      setProducts(products_response);
+    } catch (error) {
+      console.log(error);
+    }
   }
   async function getSuppliers() {
-    const res = await axios.get("http://localhost:3001/suppliers");
-    const products_response = res.data;
-    setSuppliers(products_response);
+    try {
+      const res = await api.get("/suppliers");
+      const products_response = res.data;
+      setSuppliers(products_response);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   function handleSubmit(event: any) {

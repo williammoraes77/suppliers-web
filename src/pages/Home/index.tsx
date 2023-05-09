@@ -1,28 +1,35 @@
-import { Sidebar } from "@components/Sidebar";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import { Wrapper, HeaderContent, DataContent } from "./styles";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { HomeCard } from "@components/HomeCard";
+
 import { ProductDTO } from "src/dtos/ProductDTO";
 import { SupplierDTO } from "src/dtos/SupplierDTO";
-import { Link } from "react-router-dom";
+import { Sidebar } from "@components/Sidebar";
+import { HomeCard } from "@components/HomeCard";
+import { api } from "@services/api";
 
 export function Home() {
   const [products, setProducts] = useState<ProductDTO[]>([]);
   const [suppliers, setSuppliers] = useState<SupplierDTO[]>([]);
 
   async function getProducts() {
-    axios.get("http://localhost:3001/products").then((res) => {
-      const products_response = res.data;
-      setProducts(products_response);
-    });
+    try {
+      const response = await api.get("/products");
+      const products = response.data;
+      setProducts(products);
+    } catch (error) {
+      console.log(error);
+    }
   }
   async function getSuppliers() {
-    axios.get("http://localhost:3001/suppliers").then((res) => {
-      const products_response = res.data;
-      setSuppliers(products_response);
-    });
+    try {
+      const response = await api.get("/suppliers");
+      const suppliers = response.data;
+      setSuppliers(suppliers);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   useEffect(() => {

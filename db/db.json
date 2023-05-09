@@ -25,9 +25,9 @@
       "id": 5
     },
     {
-      "name": "Produto 5",
-      "brand": "Puma",
-      "measurement_unit_type": "metro",
+      "name": "Produto 2",
+      "brand": " Nike",
+      "measurement_unit_type": "unidade",
       "id": 6
     }
   ],
@@ -54,6 +54,17 @@
         4
       ],
       "id": 3
+    },
+    {
+      "name": "Raquel",
+      "address": "Rua Tavares de Lyra, 567, Parque da Fonte, São José dos Pinhais",
+      "phone": "4199889078",
+      "cnpj": "67.876.543/4567-85",
+      "products_id": [
+        3,
+        5
+      ],
+      "id": 4
     }
   ]
 }
