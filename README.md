@@ -18,7 +18,7 @@ Foi desenvolvido um projeto web Front-end consumindo uma API JSON da [Viacep](ht
 - Lista os produtos cadastrados no sistema.
 - Cadastro de um novo produto.
 - Verificação de produto repetido(analisando Nome e marca).
-- Exclusão de um produto(quando o produto é deletado do sistema, é automaticamente da lista de todos os fornecedores).
+- Exclusão de um produto(quando o produto é deletado do sistema, é automaticamente excluído da lista de todos os fornecedores).
 
 - **Fornecedores**
 - Lista dos fornecedores cadastrados no sistema.
@@ -33,10 +33,10 @@ Foi desenvolvido um projeto web Front-end consumindo uma API JSON da [Viacep](ht
 
 <div align="center">
 
-  <img align="center" src="https://github.com/williammoraes77/suppliers-web/blob/main/public/img/print_01.png" alt="Imagem do projeto" height="150">
-  <img align="center" src="https://github.com/williammoraes77/suppliers-web/blob/main/public/img/print_02.png" alt="Imagem do projeto" height="150">
-  <img align="center" src="https://github.com/williammoraes77/suppliers-web/blob/main/public/img/print_03.png" alt="Imagem do projeto" height="150"> 
-  <img align="center" src="https://github.com/williammoraes77/suppliers-web/blob/main/public/img/print_04.png" alt="Imagem do projeto" height="150">
+  <img align="center" src="https://github.com/williammoraes77/suppliers-web/blob/master/public/img/print_01.png" alt="Imagem do projeto" height="150">
+  <img align="center" src="https://github.com/williammoraes77/suppliers-web/blob/master/public/img/print_02.png" alt="Imagem do projeto" height="150">
+  <img align="center" src="https://github.com/williammoraes77/suppliers-web/blob/master/public/img/print_03.png" alt="Imagem do projeto" height="150"> 
+  <img align="center" src="https://github.com/williammoraes77/suppliers-web/blob/master/public/img/print_04.png" alt="Imagem do projeto" height="150">
   <br>
   <br>
   
@@ -54,7 +54,6 @@ Tecnologias destacadas no projeto:
 - **Styled-Components**
 - **Json-Server**
 - **Axios**
-- **react-router**
 - **react-router**
 - **vite**
 
@@ -120,6 +119,6 @@ yarn run backend
 
 ### Passo 5: copiar o endereço local conforme a imagem e abrir pelo navegador:
 
-  <img align="center" src="https://github.com/williammoraes77/suppliers-web/blob/main/public/img/print_05.png" alt="Imagem do projeto" height="200">
+  <img align="center" src="https://github.com/williammoraes77/suppliers-web/blob/master/public/img/print_05.png" alt="Imagem do projeto" height="200">
 
 Desenvolvido com ❤️ && ☕ por William Moraes 🚀
