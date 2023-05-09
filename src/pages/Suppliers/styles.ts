@@ -17,6 +17,16 @@ export const Wrapper = styled.div`
     background-color: ${({ theme }) => theme.colors.backgroundDark};
     border-radius: 16px;
   }
+
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: 296px 1fr;
+  }
+
+  @media (max-width: 767px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const DataContent = styled.div`
@@ -119,4 +129,9 @@ export const InputCnpj = styled(InputMask)`
   border: none;
   border-radius: 4px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+`;
+
+export const TableWrapper = styled.div`
+  max-height: 500px; // altura máxima da tabela
+  overflow: auto; // permite a rolagem da tabela
 `;

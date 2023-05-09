@@ -3,30 +3,57 @@
     {
       "name": "Produto 2",
       "brand": "Adidas",
-      "measurement_unit_type": "unidade",
+      "measurement_unit_type": "quilograma",
       "id": 2
     },
     {
-      "name": "Produto 2",
+      "name": "Produto 1",
       "brand": "Nike",
+      "measurement_unit_type": "unidade",
+      "id": 3
+    },
+    {
+      "name": "Produto 3",
+      "brand": "Puma",
       "measurement_unit_type": "unidade",
       "id": 4
     },
     {
-      "name": "teste",
-      "brand": "Nike",
-      "measurement_unit_type": "quilograma",
+      "name": "Produto 4",
+      "brand": "Adidas",
+      "measurement_unit_type": "unidade",
       "id": 5
+    },
+    {
+      "name": "Produto 5",
+      "brand": "Puma",
+      "measurement_unit_type": "metro",
+      "id": 6
     }
   ],
   "suppliers": [
     {
       "name": "will",
-      "cnpj": "45.676.543/2456-76",
-      "phone": "41985234304",
-      "address": "Rua Hildebrando de Araújo, 123, Jardim Botânico, Curitiba",
-      "products_id": [2, 4],
+      "address": "Rua Tavares de Lyra, 12344, Parque da Fonte, São José dos Pinhais",
+      "phone": "6543456765432",
+      "cnpj": "65.432.345/6765-43",
+      "products_id": [
+        2,
+        3
+      ],
       "id": 1
+    },
+    {
+      "name": "soarez",
+      "address": "Rua Hildebrando de Araújo, 123, Jardim Botânico, Curitiba",
+      "phone": "41985234304",
+      "cnpj": "54.356.767/8788-98",
+      "products_id": [
+        2,
+        3,
+        4
+      ],
+      "id": 3
     }
   ]
 }

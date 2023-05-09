@@ -1,5 +1,9 @@
 import AliceCarousel from "react-alice-carousel";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+interface NavProps {
+  active: boolean;
+}
 
 export const Wrapper = styled.div`
   max-width: 85rem;
@@ -11,12 +15,36 @@ export const Wrapper = styled.div`
 
   gap: 1rem;
   /* align-items: flex-start; */
-
   main {
     padding: 1.5rem;
     background-color: ${({ theme }) => theme.colors.backgroundDark};
     border-radius: 16px;
   }
+
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: 296px 1fr;
+  }
+
+  @media (max-width: 767px) {
+    display: flex;
+    flex-direction: column;
+  }
+`;
+
+export const LoadingContainer = styled.div`
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const HeaderContent = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 20px;
 `;
 
 export const DataContent = styled.div`
@@ -102,4 +130,26 @@ export const StyledCarousel = styled(AliceCarousel)`
     width: 150px;
     height: 150px;
   }
+`;
+
+export const OptionButton = styled.button<NavProps>`
+  background: transparent;
+  border: none;
+  color: ${({ theme }) => theme.colors["gray-700"]};
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0 1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 12px;
+
+  ${({ theme, active }) =>
+    active &&
+    css`
+      border-bottom: 3px solid ${theme.colors["gray-700"]};
+      color: ${theme.colors.primary};
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+    `}
 `;

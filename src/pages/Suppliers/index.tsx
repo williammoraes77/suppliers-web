@@ -16,6 +16,7 @@ import {
   Input,
   ButtonContainer,
   InputCnpj,
+  TableWrapper,
 } from "./styles";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -50,7 +51,6 @@ export function Suppliers() {
 
   async function getSuppliers() {
     axios.get("http://localhost:3001/suppliers").then((res) => {
-      console.log(res.data);
       const suppliers_response = res.data;
       setSuppliers(suppliers_response);
     });
@@ -65,8 +65,7 @@ export function Suppliers() {
     let verifyCnpj = cnpj.replace(/_/g, "");
     let new_address = `${street}, ${number}, ${neighborhood}, ${city}`;
 
-    console.log("tamanho cnpj");
-    console.log(verifyCnpj.length);
+    let products_ids: Array<number> = [];
 
     if (suppliertAlreadyExists.length == 0 && verifyCnpj.length >= 18) {
       const supplier = {
@@ -74,7 +73,7 @@ export function Suppliers() {
         cnpj,
         phone,
         address: new_address,
-        products_id: [1, 2],
+        products_id: products_ids,
       } as SupplierDTO;
       const res = await axios.post("http://localhost:3001/suppliers", supplier);
       const newSupplierResponse = res.data;
@@ -99,13 +98,17 @@ export function Suppliers() {
   }
 
   async function fetchCep(value: string) {
-    console.log(value);
     const res = await axios.get(`https://viacep.com.br/ws/${value}/json/`);
     const addrassData = res.data;
     setStreet(addrassData.logradouro);
     setNeighborhood(addrassData.bairro);
     setCity(addrassData.localidade);
-    console.log(addrassData);
+  }
+
+  function validateCep(value: string) {
+    if (value.length == 8) {
+      fetchCep(value);
+    }
   }
 
   function handleSubmit(event: any) {
@@ -144,35 +147,37 @@ export function Suppliers() {
             />
           </HeaderContent>
           <DataContent>
-            <Table>
-              <thead>
-                <TableRow>
-                  <TableHeader>Nome</TableHeader>
-                  <TableHeader>CNPJ</TableHeader>
-                  <TableHeader>Endereço</TableHeader>
-                  <TableHeader>Telefone</TableHeader>
-                  <TableHeader>Produtos</TableHeader>
-                </TableRow>
-              </thead>
-              <tbody>
-                {suppliers.map((supplier) => (
-                  <TableRow key={supplier.id}>
-                    <TableData>{supplier.name}</TableData>
-                    <TableData>{supplier.cnpj}</TableData>
-                    <TableData>{supplier.address}</TableData>
-                    <TableData>{supplier.phone}</TableData>
-                    <TableData>
-                      <Link to={`/fornecedores/detail/${supplier.id}`}>
-                        <Button
-                          title="Gerenciar produtos"
-                          button_type="secondary"
-                        />
-                      </Link>
-                    </TableData>
+            <TableWrapper>
+              <Table>
+                <thead>
+                  <TableRow>
+                    <TableHeader>Nome</TableHeader>
+                    <TableHeader>CNPJ</TableHeader>
+                    <TableHeader>Endereço</TableHeader>
+                    <TableHeader>Telefone</TableHeader>
+                    <TableHeader>Produtos</TableHeader>
                   </TableRow>
-                ))}
-              </tbody>
-            </Table>
+                </thead>
+                <tbody>
+                  {suppliers.map((supplier) => (
+                    <TableRow key={supplier.id}>
+                      <TableData>{supplier.name}</TableData>
+                      <TableData>{supplier.cnpj}</TableData>
+                      <TableData>{supplier.address}</TableData>
+                      <TableData>{supplier.phone}</TableData>
+                      <TableData>
+                        <Link to={`/fornecedores/detail/${supplier.id}`}>
+                          <Button
+                            title="Gerenciar produtos"
+                            button_type="secondary"
+                          />
+                        </Link>
+                      </TableData>
+                    </TableRow>
+                  ))}
+                </tbody>
+              </Table>
+            </TableWrapper>
 
             <Modal
               isOpen={isModalOpen}
@@ -212,6 +217,7 @@ export function Suppliers() {
                     name="cep"
                     placeholder="Digite o CEP"
                     onBlur={(event) => fetchCep(event.target.value)}
+                    onChange={(event) => validateCep(event.target.value)}
                     maxLength={8}
                     required
                   />

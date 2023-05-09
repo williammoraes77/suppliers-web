@@ -11,7 +11,7 @@ import {
 } from "./styles";
 import { ProductDTO } from "src/dtos/ProductDTO";
 
-import ProductImage from "@assets/produto1.jpeg";
+import ProductImage from "@assets/packege.png";
 import { Button } from "@components/Button";
 
 interface ProductProps {

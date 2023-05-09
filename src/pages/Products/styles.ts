@@ -9,12 +9,21 @@ export const Wrapper = styled.div`
   grid-template-columns: 296px 1fr;
 
   gap: 1rem;
-  /* align-items: flex-start; */
 
   main {
     padding: 1.5rem;
     background-color: ${({ theme }) => theme.colors.backgroundDark};
     border-radius: 16px;
+  }
+
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: 296px 1fr;
+  }
+
+  @media (max-width: 767px) {
+    display: flex;
+    flex-direction: column;
   }
 `;
 

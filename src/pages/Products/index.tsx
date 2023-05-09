@@ -20,14 +20,17 @@ import {
   Input,
   ButtonContainer,
 } from "./styles";
-import { FileUpload } from "@components/FileUpload";
+
 import Loading from "@components/Loading";
 import Message from "@components/Message";
+import { SupplierDTO } from "src/dtos/SupplierDTO";
 
 Modal.setAppElement("#root");
 
 export function Products() {
+  const [isLoading, setIsLoading] = useState(true);
   const [products, setProducts] = useState<ProductDTO[]>([]);
+  const [suppliers, setSuppliers] = useState<SupplierDTO[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const [name, setName] = useState("");
@@ -42,7 +45,7 @@ export function Products() {
     const productAlreadyExists = products.filter(
       (product) => product.name == name && product.brand == brand
     );
-    console.log(productAlreadyExists);
+
     if (productAlreadyExists.length == 0) {
       const product = {
         name,
@@ -54,8 +57,8 @@ export function Products() {
       setProducts((prevProducts) => [...prevProducts, newProductResponse]);
       setLoading(false);
       setMessageSuccess(true);
-      setTimeout(() => setIsModalOpen(false), 2000);
-      setTimeout(() => setMessageSuccess(false), 2000);
+      setTimeout(() => setIsModalOpen(false), 1200);
+      setTimeout(() => setMessageSuccess(false), 1200);
     } else {
       setLoading(false);
       setProductExist(true);
@@ -72,6 +75,24 @@ export function Products() {
           (product) => product.id != product_id
         );
 
+        suppliers.forEach((supplier) => {
+          const products_id = supplier.products_id.filter(
+            (prod_id) => prod_id != product_id
+          );
+
+          const newSupplier = {
+            name: supplier.name,
+            address: supplier.address,
+            phone: supplier.phone,
+            cnpj: supplier.cnpj,
+            products_id: products_id,
+          } as SupplierDTO;
+
+          const response = axios.put(
+            `http://localhost:3001/suppliers/${supplier.id}`,
+            newSupplier
+          );
+        });
         setProducts(updateProducts);
       })
       .catch((error) => {
@@ -84,6 +105,11 @@ export function Products() {
     const products_response = res.data;
     setProducts(products_response);
   }
+  async function getSuppliers() {
+    const res = await axios.get("http://localhost:3001/suppliers");
+    const products_response = res.data;
+    setSuppliers(products_response);
+  }
 
   function handleSubmit(event: any) {
     event.preventDefault();
@@ -93,6 +119,7 @@ export function Products() {
 
   useEffect(() => {
     getProducts();
+    getSuppliers();
   }, []);
 
   return (
@@ -118,6 +145,7 @@ export function Products() {
                     <ProductCard
                       product_prop={product}
                       onClick={() => deleteProduct(product.id)}
+                      card_type="delete"
                     />
                   </Col>
                 ))}
@@ -182,7 +210,7 @@ export function Products() {
                     <option value="metro">Metro</option>
                   </select>
 
-                  <Label htmlFor="message">Foto :</Label>
+                  {/* <Label htmlFor="message">Foto :</Label> */}
 
                   {productExist && (
                     <Message text="Este produto já existe!" type="error" />

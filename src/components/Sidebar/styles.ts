@@ -4,6 +4,14 @@ export const SideBarContainer = styled.aside`
   background-color: ${({ theme }) => theme.colors.backgroundLight};
   border-radius: 16px;
   padding: 1rem;
+
+  /* @media (min-width: 768px) {
+    width: 250px;
+  }
+
+  @media (max-width: 767px) {
+    width: 100px;
+  } */
 `;
 
 export const SideBarCardContent = styled.div`
