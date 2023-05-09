@@ -19,7 +19,6 @@ import {
   Label,
   Input,
   ButtonContainer,
-  ErrorMessageContainer,
 } from "./styles";
 import { FileUpload } from "@components/FileUpload";
 import Loading from "@components/Loading";
@@ -30,6 +29,7 @@ Modal.setAppElement("#root");
 export function Products() {
   const [products, setProducts] = useState<ProductDTO[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const [name, setName] = useState("");
   const [brand, setBrand] = useState("");
   const [measurementUnitType, setMeasurementUnitType] = useState("unidade");
@@ -61,6 +61,22 @@ export function Products() {
       setProductExist(true);
       setTimeout(() => setProductExist(false), 2000);
     }
+  }
+
+  async function deleteProduct(product_id: number) {
+    setIsModalDeleteOpen(true);
+    axios
+      .delete("http://localhost:3001/products/" + product_id)
+      .then((response) => {
+        const updateProducts = products.filter(
+          (product) => product.id != product_id
+        );
+
+        setProducts(updateProducts);
+      })
+      .catch((error) => {
+        console.error("Erro ao excluir o item:", error);
+      });
   }
 
   async function getProducts() {
@@ -99,11 +115,32 @@ export function Products() {
               <Row style={{ marginBottom: 20 }}>
                 {products.map((product) => (
                   <Col xs={12} sm={6} md={4} lg={3} key={product.id}>
-                    <ProductCard product_prop={product} />
+                    <ProductCard
+                      product_prop={product}
+                      onClick={() => deleteProduct(product.id)}
+                    />
                   </Col>
                 ))}
               </Row>
             </React.Fragment>
+
+            <Modal
+              isOpen={isModalDeleteOpen}
+              onRequestClose={() => setIsModalDeleteOpen(false)}
+            >
+              <Form>
+                <Message text="Produto deletado com sucesso!" type="success" />
+              </Form>
+
+              <ButtonContainer>
+                <Button
+                  title="OK"
+                  type="submit"
+                  button_type="primary"
+                  onClick={() => setIsModalDeleteOpen(false)}
+                />
+              </ButtonContainer>
+            </Modal>
 
             <Modal
               isOpen={isModalOpen}
@@ -146,10 +183,7 @@ export function Products() {
                   </select>
 
                   <Label htmlFor="message">Foto :</Label>
-                  {/* <FileUpload /> */}
 
-                  {/* <Input type="file" required /> */}
-                  {/* console.log() alterar se der tempo*/}
                   {productExist && (
                     <Message text="Este produto já existe!" type="error" />
                   )}
@@ -168,6 +202,7 @@ export function Products() {
                         title="Cadastrar"
                         type="submit"
                         button_type="primary"
+                        disabled={messageSuccess}
                       />
                     </ButtonContainer>
                   )}

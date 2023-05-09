@@ -11,6 +11,8 @@ export const defaultTheme = {
 
     buttomPrimary: "#5693ef",
 
+    buttomSecondary: "#007DBA",
+
     primary: "#082D67",
 
     "gray-100": "#E1E1E6",
@@ -32,6 +34,7 @@ export const defaultTheme = {
   },
   font_size: {
     SM: 9,
+    SM_MD: 12,
     MD: 16,
     LG: 18,
     XL: 24,

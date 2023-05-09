@@ -52,3 +52,12 @@ export const UnityMeasurement = styled.p`
 export const Brand = styled.p`
   font-weight: bold;
 `;
+
+export const ButtonContent = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  padding: 5px;
+`;

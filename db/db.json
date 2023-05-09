@@ -1,106 +1,34 @@
 {
   "products": [
     {
-      "id": 1,
       "name": "Produto 1",
+      "brand": "Nike",
       "measurement_unit_type": "unidade",
-      "brand": "Nike"
+      "id": 1
     },
     {
-      "id": 2,
       "name": "Produto 2",
-      "measurement_unit_type": "quilograma",
-      "brand": "Adidas"
-    },
-    {
-      "id": 3,
-      "name": "Produto 3",
-      "measurement_unit_type": "metro",
-      "brand": "Puma"
-    },
-    {
-      "id": 4,
-      "name": "Produto 4",
-      "measurement_unit_type": "metro",
-      "brand": "Puma"
-    },
-    {
-      "id": 5,
-      "name": "Produto 5",
-      "measurement_unit_type": "metro",
-      "brand": "Puma"
-    },
-    {
-      "id": 6,
-      "name": "Produto 6",
-      "measurement_unit_type": "metro",
-      "brand": "Puma"
-    },
-    {
-      "id": 7,
-      "name": "Produto 7",
-      "measurement_unit_type": "metro",
-      "brand": "Puma"
-    },
-    {
-      "name": "Produto 8",
-      "brand": "testee",
-      "measurement_unit_type": "metro",
-      "id": 8
-    },
-    {
-      "name": "Produto 9",
-      "brand": "testee 2",
-      "measurement_unit_type": "quilograma",
-      "id": 9
-    },
-    {
-      "name": "Produto 10",
-      "brand": "nova marca",
-      "measurement_unit_type": "metro",
-      "id": 10
-    },
-    {
-      "name": "Produto 11",
-      "brand": "nova marca",
-      "measurement_unit_type": "quilograma",
-      "id": 11
+      "brand": "Adidas",
+      "measurement_unit_type": "unidade",
+      "id": 2
     },
     {
       "name": "Produto 1",
-      "brand": "Nike",
-      "measurement_unit_type": "",
-      "id": 12
-    },
-    {
-      "name": "Produto 12",
-      "brand": "Nike",
-      "measurement_unit_type": "",
-      "id": 13
+      "brand": "Adidas",
+      "measurement_unit_type": "unidade",
+      "id": 3
     },
     {
       "name": "Produto 2",
       "brand": "Nike",
       "measurement_unit_type": "unidade",
-      "id": 14
+      "id": 4
     },
     {
-      "name": "produto teste",
+      "name": "teste",
       "brand": "Nike",
-      "measurement_unit_type": "unidade",
-      "id": 15
-    },
-    {
-      "name": "Produto testew",
-      "brand": "teste",
-      "measurement_unit_type": "unidade",
-      "id": 16
-    },
-    {
-      "name": "produto teste 3",
-      "brand": "teste",
-      "measurement_unit_type": "unidade",
-      "id": 17
+      "measurement_unit_type": "quilograma",
+      "id": 5
     }
   ],
   "suppliers": [
@@ -125,6 +53,138 @@
         1,
         2
       ]
+    },
+    {
+      "name": "Fornecedor teste",
+      "cnpj": "001111222",
+      "phone": "41985234304",
+      "address": "80210260",
+      "products_id": [
+        1,
+        2
+      ],
+      "id": 2
+    },
+    {
+      "name": "Fornecedor teste 2",
+      "cnpj": "00001111111",
+      "phone": "41992559329",
+      "address": "Rua Alzira Ângela da Guarda, 1833, Aviação, São José dos Pinhais",
+      "products_id": [
+        1,
+        2
+      ],
+      "id": 3
+    },
+    {
+      "name": "Fornecedor teste",
+      "cnpj": "00001111112",
+      "phone": "41985234304",
+      "address": "Rua Hildebrando de Araújo, 123, Jardim Botânico, Curitiba",
+      "products_id": [
+        1,
+        2
+      ],
+      "id": 4
+    },
+    {
+      "name": "testerrr",
+      "cnpj": "12.344.555/4333-__",
+      "phone": "41985234304",
+      "address": "Rua Hildebrando de Araújo, 123, Jardim Botânico, Curitiba",
+      "products_id": [
+        1,
+        2
+      ],
+      "id": 5
+    },
+    {
+      "name": "will",
+      "cnpj": "21.234.443/4443-__",
+      "phone": "41992445672",
+      "address": "Rua Tavares de Lyra, 1766, Parque da Fonte, São José dos Pinhais",
+      "products_id": [
+        1,
+        2
+      ],
+      "id": 6
+    },
+    {
+      "name": "will 2",
+      "cnpj": "64.555.346/5676-__",
+      "phone": "41985234304",
+      "address": "Rua Hildebrando de Araújo, 234, Jardim Botânico, Curitiba",
+      "products_id": [
+        1,
+        2
+      ],
+      "id": 7
+    },
+    {
+      "name": "will3",
+      "cnpj": "45.365.334/6654-__",
+      "phone": "41985234304",
+      "address": "Rua Hildebrando de Araújo, 1234, Jardim Botânico, Curitiba",
+      "products_id": [
+        1,
+        2
+      ],
+      "id": 8
+    },
+    {
+      "name": "will 8",
+      "cnpj": "45.678.765/4344-31",
+      "phone": "41985234304",
+      "address": "Rua Hildebrando de Araújo, 321, Jardim Botânico, Curitiba",
+      "products_id": [
+        1,
+        2
+      ],
+      "id": 9
+    },
+    {
+      "name": "will 10",
+      "cnpj": "63.456.788/7654-56",
+      "phone": "41985234304",
+      "address": "Rua Hildebrando de Araújo, 1321, Jardim Botânico, Curitiba",
+      "products_id": [
+        1,
+        2
+      ],
+      "id": 10
+    },
+    {
+      "name": "will 11",
+      "cnpj": "34.565.675/4345-62",
+      "phone": "41985234304",
+      "address": "Rua Hildebrando de Araújo, 8754, Jardim Botânico, Curitiba",
+      "products_id": [
+        1,
+        2
+      ],
+      "id": 11
+    },
+    {
+      "name": "will 12",
+      "cnpj": "65.456.754/5674-56",
+      "phone": "41985234304",
+      "address": "Rua Hildebrando de Araújo, 123, Jardim Botânico, Curitiba",
+      "products_id": [
+        1,
+        2
+      ],
+      "id": 12
+    },
+    {
+      "name": "will 8",
+      "cnpj": "45.678.976/5432-34",
+      "phone": "457876546789",
+      "address": "Rua Tavares de Lyra, 123, Parque da Fonte, São José dos Pinhais",
+      "products_id": [
+        1,
+        2
+      ],
+      "id": 13
     }
   ]
 }

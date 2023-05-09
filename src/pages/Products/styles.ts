@@ -36,11 +36,13 @@ export const Form = styled.form``;
 
 export const FormContent = styled.div`
   display: flex;
-  border: 1px solid red;
+  border-radius: 12px;
+  border: 1px solid ${({ theme }) => theme.colors.backgroundLight};
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   flex-direction: column;
   max-width: 400px;
   margin: 0 auto;
-
+  padding: 20px;
   select {
     padding: 10px;
     font-size: 16px;
@@ -71,28 +73,6 @@ export const Input = styled.input`
   border: none;
   border-radius: 4px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-`;
-
-export const Textarea = styled.textarea`
-  padding: 8px;
-  margin-bottom: 16px;
-  border: none;
-  border-radius: 4px;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-`;
-
-export const Button = styled.button`
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: none;
-  background-color: #4caf50;
-  color: white;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #3e8e41;
-  }
 `;
 
 export const ButtonContainer = styled.div`

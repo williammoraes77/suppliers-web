@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 interface Props {
-  button_type: "primary" | "secondary";
+  button_type: "primary" | "secondary" | "delete";
 }
 
 export const ButtonContent = styled.button<Props>`
@@ -23,9 +23,21 @@ export const ButtonContent = styled.button<Props>`
           background-color: ${theme.colors["green-500"]};
         `
       : css`
-          background-color: ${theme.colors["red-500"]};
+          background-color: ${theme.colors.buttomSecondary};
           &:hover {
-            background-color: ${theme.colors["red-300"]};
+            background-color: #7ec8ea;
           }
         `}
+
+  ${({ theme, button_type }) =>
+    button_type === "delete" &&
+    css`
+      background-color: ${theme.colors.white};
+      border: 1px solid ${theme.colors["red-500"]};
+      color: ${theme.colors["red-500"]};
+
+      &:hover {
+        color: ${theme.colors.white};
+      }
+    `}
 `;

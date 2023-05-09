@@ -1,4 +1,4 @@
-import { BookOpen, House, MonitorPlay } from "@phosphor-icons/react";
+import { BookOpen, House, Users, Package } from "@phosphor-icons/react";
 
 import {
   SideBarContainer,
@@ -23,17 +23,13 @@ export function Sidebar() {
         </NavLink>
         <NavLink to="/produtos" title="Listar">
           <CardLinkOption>
-            <MonitorPlay
-              size={22}
-              color={theme.colors.fontColor}
-              weight="fill"
-            />
+            <Package size={22} color={theme.colors.fontColor} weight="fill" />
             <span>Produtos</span>
           </CardLinkOption>
         </NavLink>
         <NavLink to="/fornecedores" title="Listar">
           <CardLinkOption>
-            <BookOpen size={22} color={theme.colors.fontColor} weight="fill" />
+            <Users size={22} color={theme.colors.fontColor} weight="fill" />
             <span>Fornecedores</span>
           </CardLinkOption>
         </NavLink>
