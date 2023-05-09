@@ -33,10 +33,10 @@ Foi desenvolvido um projeto web Front-end consumindo uma API JSON da [Viacep](ht
 
 <div align="center">
 
-  <img align="center" src="https://github.com/williammoraes77/suppliers-web/blob/master/public/img/print_01.png" alt="Imagem do projeto" height="150">
-  <img align="center" src="https://github.com/williammoraes77/suppliers-web/blob/master/public/img/print_02.png" alt="Imagem do projeto" height="150">
-  <img align="center" src="https://github.com/williammoraes77/suppliers-web/blob/master/public/img/print_03.png" alt="Imagem do projeto" height="150"> 
-  <img align="center" src="https://github.com/williammoraes77/suppliers-web/blob/master/public/img/print_04.png" alt="Imagem do projeto" height="150">
+  <img align="center" src="https://github.com/williammoraes77/suppliers-web/blob/master/public/img/print_1.png" alt="Imagem do projeto" height="150">
+  <img align="center" src="https://github.com/williammoraes77/suppliers-web/blob/master/public/img/print_2.png" alt="Imagem do projeto" height="150">
+  <img align="center" src="https://github.com/williammoraes77/suppliers-web/blob/master/public/img/print_3.png" alt="Imagem do projeto" height="150"> 
+  <img align="center" src="https://github.com/williammoraes77/suppliers-web/blob/master/public/img/print_4.png" alt="Imagem do projeto" height="150">
   <br>
   <br>
   
@@ -119,6 +119,6 @@ yarn run backend
 
 ### Passo 5: copiar o endereço local conforme a imagem e abrir pelo navegador:
 
-  <img align="center" src="https://github.com/williammoraes77/suppliers-web/blob/master/public/img/print_05.png" alt="Imagem do projeto" height="200">
+  <img align="center" src="https://github.com/williammoraes77/suppliers-web/blob/master/public/img/print_5.png" alt="Imagem do projeto" height="200">
 
 Desenvolvido com ❤️ && ☕ por William Moraes 🚀
